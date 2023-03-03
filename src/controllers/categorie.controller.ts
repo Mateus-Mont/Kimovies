@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { iDataCreateCategory, iReturnCreateCategory } from "../interfaces/categories.interface";
-import { createCategoryService } from "../service";
+import { iCategoriesReturn, iDataCreateCategory, iReturnCreateCategory } from "../interfaces/categories.interface";
+import { createCategoryService, listCategoriesService } from "../service";
 
 export const createCategoryController = async ( req: Request, res: Response ): Promise<Response> => {
 
@@ -12,3 +12,10 @@ export const createCategoryController = async ( req: Request, res: Response ): P
 
   return res.status(201).json(newCategory);
 };
+
+export const listCategoriesController= async ( req: Request, res :Response): Promise<Response>=>{
+
+  const categories:iCategoriesReturn = await listCategoriesService()
+
+  return res.status(200).json(categories)
+}

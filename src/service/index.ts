@@ -3,11 +3,13 @@ import {loginUserService} from "./login/login.service"
 import {createCategoryService} from "./categories/categories.service"
 import {allUsersService} from "./users/users.service"
 import {updateUserService} from "./users/users.service"
+import {listCategoriesService} from "./categories/categories.service"
 
 export{
     createUserService,
     loginUserService,
     createCategoryService,
     allUsersService,
-    updateUserService
+    updateUserService,
+    listCategoriesService
 }

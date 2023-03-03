@@ -4,6 +4,8 @@ export const dataCategorySchema = z.object({
   name: z.string().min(3).max(45),
 });
 
-export const returnDataCategory = dataCategorySchema.extend({
+export const returnDataCategorySchema = dataCategorySchema.extend({
   id: z.number(),
 });
+
+export const categoriesReturnSchema= returnDataCategorySchema.array()

@@ -1,16 +1,18 @@
 import { createUserSchema } from "./users/users.schema";
-import { loginUser } from "./login/login.schema";
+import { loginUserSchema } from "./login/login.schema";
 import { returnCreateUserSchema } from "./users/users.schema";
-import { dataCategorySchema,  returnDataCategory } from "./categories/categories.schema";
+import { dataCategorySchema, returnDataCategorySchema } from "./categories/categories.schema";
 import { returnMultipleUserSchema } from "./users/users.schema";
 import { updateUserSchema } from "./users/users.schema";
+import { categoriesReturnSchema } from "./categories/categories.schema"
 
 export {
-  loginUser,
+  loginUserSchema,
   createUserSchema,
   returnCreateUserSchema,
   dataCategorySchema,
-  returnDataCategory,
+  returnDataCategorySchema,
   returnMultipleUserSchema,
   updateUserSchema,
+  categoriesReturnSchema
 };
