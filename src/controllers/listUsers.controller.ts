@@ -1,10 +1,9 @@
-import { Request,Response } from "express";
-import {allUsersService} from "../service"
+import { Request, Response } from "express";
+import { allUsersService } from "../service";
 
-export const listUsersController=async(req:Request,res:Response):Promise<Response>=>{
+export const listUsersController = async ( req: Request, res: Response ): Promise<Response> => {
 
-    const users = await allUsersService()
+  const users = await allUsersService();
 
-    return res.status(200).json(users)
-
-}
+  return res.status(200).json(users);
+};

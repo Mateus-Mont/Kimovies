@@ -12,7 +12,8 @@ export const returnCreateUserSchema = createUserSchema
     id: z.number(),
     createdAt: z.date(),
     deletedAt: z.union([z.date(), z.null()]),
-  })
-  .omit({ password: true });
+  }).omit({ password: true });
 
-  export  const returnMultipleUserSchema = returnCreateUserSchema.array()
+export const returnMultipleUserSchema = returnCreateUserSchema.array();
+
+export const updateUserSchema = createUserSchema.partial().omit({ admin: true });

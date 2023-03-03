@@ -1,11 +1,11 @@
 import { ZodTypeAny } from "zod";
-import { NextFunction, Request,Response } from "express";
+import { NextFunction, Request, Response } from "express";
 
-export const validBodyMiddlewares=(schema:ZodTypeAny)=>(req:Request,res:Response,next:NextFunction):void=>{
+export const ensureValidBodyMiddlewares =( schema: ZodTypeAny) =>( req: Request, res: Response, next: NextFunction ): void => {
+    
+    const validBody = schema.parse(req.body);
 
-    const validBody=schema.parse(req.body)
+    req.body = validBody;
 
-    req.body=validBody
-
-    return next()
-}
+    return next();
+  };

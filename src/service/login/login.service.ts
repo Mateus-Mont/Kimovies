@@ -7,7 +7,8 @@ import Jwt from "jsonwebtoken";
 import { iDataLogin } from "../../interfaces/login.interface";
 import { AppError } from "../../errors";
 
-export const loginUserService = async (dataLogin: iDataLogin): Promise<string> => {
+export const loginUserService = async ( dataLogin: iDataLogin ): Promise<string> => {
+
   const { email, password } = dataLogin;
 
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
@@ -30,7 +31,7 @@ export const loginUserService = async (dataLogin: iDataLogin): Promise<string> =
     {
       admin: user.admin,
     },
-      process.env.SECRET_KEY!,
+    process.env.SECRET_KEY!,
     {
       expiresIn: "24h",
       subject: String(user.id),

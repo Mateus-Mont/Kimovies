@@ -5,7 +5,7 @@ import { iDataCreateUser, iReturnCreateUser, iUsersReturn } from "../../interfac
 import { iUpdateUser } from "../../interfaces/users.interface";
 import { returnCreateUserSchema, returnMultipleUserSchema } from "../../schemas";
 
-export const createUserService = async (dataUser:iDataCreateUser):Promise<iReturnCreateUser> => {
+export const createUserService = async ( dataUser: iDataCreateUser ): Promise<iReturnCreateUser> => {
 
   const createUserRepository: Repository<User> = AppDataSource.getRepository(User);
 
@@ -18,34 +18,32 @@ export const createUserService = async (dataUser:iDataCreateUser):Promise<iRetur
   return newUser;
 };
 
-export const allUsersService=async():Promise<iUsersReturn>=>{
+export const allUsersService = async (): Promise<iUsersReturn> => {
+  const usersRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  const usersRepository:Repository<User>=AppDataSource.getRepository(User)
+  const findUsers: Array<User> = await usersRepository.find();
 
-  const findUsers:Array<User>= await usersRepository.find()
+  const users = returnMultipleUserSchema.parse(findUsers);
 
-  const users=returnMultipleUserSchema.parse(findUsers)
+  return users;
+};
 
-  return users
-}
+export const updateUserService = async ( newUserData: iUpdateUser, idUser: number ): Promise<iUpdateUser> => {
 
-export const updateUserService=async(newUserData:iUpdateUser,idUser:number):Promise<iUpdateUser>=>{
+  const usersRepository: Repository<User> = AppDataSource.getRepository(User);
 
-  const usersRepository:Repository<User>=AppDataSource.getRepository(User)
+  const oldUserData: User | null = await usersRepository.findOneBy({
+    id: idUser,
+  });
 
-  const oldUserData: User | null =await usersRepository.findOneBy({
-    id:idUser
-  })
-
-  const newDataUser= usersRepository.create({
+  const newDataUser = usersRepository.create({
     ...oldUserData,
-    ...newUserData
-  })
+    ...newUserData,
+  });
 
-  await usersRepository.save(newDataUser)
+  await usersRepository.save(newDataUser);
 
-  const user:iUpdateUser=returnCreateUserSchema.parse(newDataUser)
+  const user: iUpdateUser = returnCreateUserSchema.parse(newDataUser);
 
-  return user
-
-}
+  return user;
+};

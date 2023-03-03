@@ -32,4 +32,3 @@ export const dataSourceConfig = (): DataSourceOptions => {
 };
 
 export const AppDataSource = new DataSource(dataSourceConfig());
-
