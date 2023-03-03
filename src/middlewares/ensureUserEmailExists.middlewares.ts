@@ -7,6 +7,11 @@ import { AppError } from "../errors";
 export const ensureMiddleEmailExists = async (req: Request, res:Response,next: NextFunction): Promise<void> => {
   const { email } = req.body;
 
+
+  if(!email){
+    return next()
+  }
+
   const userRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const user:User | null= await userRepository.findOne({

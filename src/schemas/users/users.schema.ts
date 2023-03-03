@@ -14,3 +14,5 @@ export const returnCreateUserSchema = createUserSchema
     deletedAt: z.union([z.date(), z.null()]),
   })
   .omit({ password: true });
+
+  export  const returnMultipleUserSchema = returnCreateUserSchema.array()

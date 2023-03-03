@@ -1,11 +1,15 @@
 import { iDataCreateUser,iReturnCreateUser} from "./users.interface"
 import { iDataLogin } from "./login.interface"
-import { iDataCategory } from "./categories.interface"
+import { iDataCreateCategory } from "./categories.interface"
+import  {iUsersReturn} from  "./users.interface"
+import  {iUpdateUser}  from "./users.interface"
 
 export{
     iDataCreateUser,
     iReturnCreateUser,
     iDataLogin,
-    iDataCategory
+    iDataCreateCategory,
+    iUsersReturn,
+    iUpdateUser
 }
 
