@@ -26,7 +26,7 @@ export class User {
   email: string;
 
   @Column({type:"boolean", nullable: false, default: false })
-  admin?: boolean | undefined | null;
+  admin: boolean ;
 
   @Column({ type: "varchar", length: 120, nullable: false })
   password: string;

@@ -13,7 +13,7 @@ export class AppError extends Error {
   }
 }
  
-export const handleErrors=(error:Error,req:Request,res:Response,next:NextFunction)=>{
+export const handleErrors=(error:Error,req:Request,res:Response,_:NextFunction)=>{
     if(error instanceof AppError){
         return res.status(error.statusCode).json({message:error.message})
     }

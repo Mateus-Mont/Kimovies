@@ -13,6 +13,6 @@ app.use("/login",loginRoutes)
 app.use("/categories",categoriesRoutes)
 app.use("/users",usersRoutes)
 app.use("/schedules",schedulesRoutes)
-app.use("realEstate",realEstateRoutes)
+app.use("/realEstate",realEstateRoutes)
 app.use(handleErrors)
 export default app

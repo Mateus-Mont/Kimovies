@@ -1,4 +1,5 @@
 import { createUserController } from "./users.controller";
-import {loginUserController} from "./login.controller"
+import { loginUserController } from "./login.controller";
+import { createCategoryController } from "./categorie.controller";
 
-export { createUserController, loginUserController };
+export { createUserController, loginUserController, createCategoryController };
