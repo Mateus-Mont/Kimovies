@@ -6,6 +6,7 @@ import {
   ManyToOne,
   OneToMany,
   PrimaryColumn,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from "typeorm";
 import { Address } from "./addresses.entity";
@@ -14,7 +15,7 @@ import { Schedule } from "./schedules_users_properties.entity";
 
 @Entity("real_state")
 export class RealEstate {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: "boolean", default: false })

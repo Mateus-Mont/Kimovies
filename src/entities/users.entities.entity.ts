@@ -9,12 +9,14 @@ import {
   BeforeUpdate,
   BeforeInsert,
   OneToMany,
+  PrimaryGeneratedColumn,
 } from "typeorm";
+import { boolean } from "zod";
 import { Schedule } from "./schedules_users_properties.entity";
 
 @Entity("users")
 export class User {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ type: "varchar", length: 45, nullable: false })
@@ -23,8 +25,8 @@ export class User {
   @Column({ type: "varchar", length: 45, unique: true, nullable: false })
   email: string;
 
-  @Column({ nullable: false, default: false })
-  admin: boolean;
+  @Column({type:"boolean", nullable: false, default: false })
+  admin?: boolean | undefined | null;
 
   @Column({ type: "varchar", length: 120, nullable: false })
   password: string;

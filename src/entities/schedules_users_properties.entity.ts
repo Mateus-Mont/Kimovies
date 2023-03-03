@@ -5,13 +5,14 @@ import {
   ManyToMany,
   ManyToOne,
   PrimaryColumn,
+  PrimaryGeneratedColumn,
 } from "typeorm";
 import { RealEstate } from "./real_estate.entity";
 import { User } from "./users.entities.entity";
 
 @Entity("schedules_users_properties")
 export class Schedule {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id: number;
 
   @CreateDateColumn({ type: "timestamp", nullable: false })
