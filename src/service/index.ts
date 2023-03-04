@@ -4,6 +4,7 @@ import {createCategoryService} from "./categories/categories.service"
 import {allUsersService} from "./users/users.service"
 import {updateUserService} from "./users/users.service"
 import {listCategoriesService} from "./categories/categories.service"
+import {deleteUserService} from "./users/users.service"
 
 export{
     createUserService,
@@ -11,5 +12,6 @@ export{
     createCategoryService,
     allUsersService,
     updateUserService,
-    listCategoriesService
+    listCategoriesService,
+    deleteUserService
 }

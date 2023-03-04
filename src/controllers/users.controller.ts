@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { iDataCreateUser, iReturnCreateUser, iUpdateUser } from "../interfaces";
-import { createUserService, updateUserService } from "../service";
+import { createUserService, deleteUserService, updateUserService } from "../service";
 
 export const createUserController = async ( req: Request, res: Response ): Promise<Response> => {
 
@@ -20,4 +20,13 @@ export const updateUserController = async ( req: Request, res: Response ): Promi
   const user: iUpdateUser = await updateUserService(dataUser, idUser);
 
   return res.status(200).json(user);
+};
+
+export const deleteUserController = async (req:Request, res:Response):Promise<Response> =>{
+
+  const idUser:number=parseInt(req.params.id)
+
+  await deleteUserService(idUser)
+
+  return res.status(204).send()
 };
