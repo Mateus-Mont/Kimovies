@@ -20,7 +20,7 @@ export const ensureMiddleEmailExists = async ( req: Request, res: Response, next
   });
 
   if (user) {
-    throw new AppError("Email already exists.", 409);
+    throw new AppError("Email already exists", 409);
   }
 
   return next();

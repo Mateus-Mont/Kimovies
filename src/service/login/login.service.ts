@@ -18,13 +18,13 @@ export const loginUserService = async ( dataLogin: iDataLogin ): Promise<string>
   });
 
   if (!user) {
-    throw new AppError("Wrong email or password", 401);
+    throw new AppError("Invalid credentials", 401);
   }
 
   const matchPassword: boolean = await compare(password, user.password);
 
   if (!matchPassword) {
-    throw new AppError("Wrong email or password", 401);
+    throw new AppError("Invalid credentials", 401);
   }
 
   const token: string = Jwt.sign(

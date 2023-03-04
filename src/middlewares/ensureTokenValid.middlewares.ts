@@ -10,7 +10,7 @@ export const ensureTokenValidMiddlewares = async (req: Request, res: Response, n
   let token: string | undefined = req.headers.authorization;
 
   if (!token) {
-    throw new AppError("Token is missing", 401);
+    throw new AppError("Missing bearer token", 401);
   }
 
   token = token.split(" ")[1];
@@ -24,6 +24,6 @@ export const ensureTokenValidMiddlewares = async (req: Request, res: Response, n
       return next();
     }
 
-    throw new AppError("Do not have permission", 403);
+    throw new AppError("Insufficient permission", 403);
   });
 };

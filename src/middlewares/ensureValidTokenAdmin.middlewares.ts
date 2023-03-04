@@ -8,7 +8,7 @@ export const ensureValidTokenAdminMiddlewares = async ( req: Request, res: Respo
   let token: string | undefined = req.headers.authorization;
 
   if (!token) {
-    throw new AppError("Token is missing", 401);
+    throw new AppError("Missing bearer token", 401);
   }
 
   token = token.split(" ")[1];
@@ -22,6 +22,6 @@ export const ensureValidTokenAdminMiddlewares = async ( req: Request, res: Respo
       return next();
     }
 
-    throw new AppError("Admin only permisson", 403);
+    throw new AppError("Insufficient permission", 403);
   });
 };

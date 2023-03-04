@@ -33,11 +33,8 @@ export class RealEstate {
   @OneToMany(()=>Schedule, (schedule)=>schedule.realEstate)
   schedule:RealEstate[]
 
-
   @ManyToOne(()=>Address)
   address:Address
-
-
 
   @CreateDateColumn()
   createdAt: string;

@@ -15,7 +15,7 @@ export class Schedule {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @CreateDateColumn({ type: "timestamp", nullable: false })
+  @CreateDateColumn({ type: "date", nullable: false })
   date: string | Date;
 
   @Column({ type: "time" })

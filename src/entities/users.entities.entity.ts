@@ -11,7 +11,6 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
 } from "typeorm";
-import { boolean } from "zod";
 import { Schedule } from "./schedules_users_properties.entity";
 
 @Entity("users")
@@ -34,10 +33,10 @@ export class User {
   @OneToMany(()=>Schedule, (Schedule)=>Schedule.user)
   schedules:Schedule[]
 
-  @CreateDateColumn()
+  @CreateDateColumn({type:"date"})
   createdAt: string;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({type:"date"})
   updatedAt: string;
 
   @DeleteDateColumn({ type: "varchar", nullable: true })

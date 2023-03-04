@@ -5,13 +5,15 @@ export const createUserSchema = z.object({
   email: z.string().max(45).email(),
   admin: z.boolean().optional().default(false),
   password: z.string().max(120),
+
 });
 
 export const returnCreateUserSchema = createUserSchema
   .extend({
     id: z.number(),
-    createdAt: z.date(),
-    deletedAt: z.union([z.date(), z.null()]),
+    createdAt: z.string(),
+    deletedAt: z.date().nullable(),
+    updatedAt:z.string().nullable()
   }).omit({ password: true });
 
 export const returnMultipleUserSchema = returnCreateUserSchema.array();

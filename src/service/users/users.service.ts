@@ -19,11 +19,12 @@ export const createUserService = async ( dataUser: iDataCreateUser ): Promise<iR
 };
 
 export const allUsersService = async (): Promise<iUsersReturn> => {
+
   const usersRepository: Repository<User> = AppDataSource.getRepository(User);
 
   const findUsers: Array<User> = await usersRepository.find();
 
-  const users = returnMultipleUserSchema.parse(findUsers);
+  const users:iUsersReturn =  returnMultipleUserSchema.parse(findUsers);
 
   return users;
 };
