@@ -1,12 +1,5 @@
-import { number, string, z } from "zod";
-
-const categoryRealEstate = z.object({
-  name: z.string()
-});
-
-const returnCategory = categoryRealEstate.extend({
-  id:number()
-})
+import { z } from "zod";
+import { returnDataCategorySchema} from "../";
 
 const createAddressSchema = z.object({
   street: z.string().min(3).max(45),
@@ -28,21 +21,14 @@ export const createRealEstateSchema = z.object({
   address: createAddressSchema
 });
 
-
 export const returnCreateRealEstate = createRealEstateSchema.extend({
   id: z.number(),
   createdAt: z.string(),
   updatedAt:z.string(),
   sold: z.boolean().default(false),
   address: returnAddressSchema,
-  category:returnCategory
+  category:returnDataCategorySchema
 });
 
 export const returnMultipleRealEstateSchema = returnCreateRealEstate.omit({category:true,categoryId:true}).array();
 
-
-// street: string e obrigatório
-// zipCode: string e obrigatório
-// number: string e opcional
-// city: string e obrigatório
-// state: string e obrigatório

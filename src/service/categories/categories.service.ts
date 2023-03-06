@@ -1,8 +1,9 @@
 import { Repository } from "typeorm";
 import { AppDataSource } from "../../data-source";
-import { Category } from "../../entities";
+import { Category, RealEstate } from "../../entities";
+import { AppError } from "../../errors";
 import { iCategoriesReturn, iDataCreateCategory, iReturnCreateCategory } from "../../interfaces/categories.interface";
-import { categoriesReturnSchema } from "../../schemas";
+import { categoriesReturnSchema, returnDataCategorySchema, returnMultipleRealEstateSchema } from "../../schemas";
 
 export const createCategoryService = async (  dataCategory: iDataCreateCategory): Promise<iReturnCreateCategory> => {
 
@@ -26,3 +27,30 @@ export const listCategoriesService=async(): Promise<iCategoriesReturn>=>{
   return categories
 
 };
+
+export const listRealEstateFromCategoryService = async(idCategory:number):Promise<object>=>{
+
+  const realEstateRepository:Repository<RealEstate>=AppDataSource.getRepository(RealEstate)
+  const categoriesRepository:Repository<Category> = AppDataSource.getRepository(Category)
+
+  const categoryFindOne:Category | null = await categoriesRepository.findOneBy({
+    id:idCategory
+  })
+
+  if(!categoryFindOne){
+    throw new AppError("Category not found",404)
+  }
+
+ const category:iReturnCreateCategory=returnDataCategorySchema.parse(categoryFindOne)
+
+  const realEstate = await realEstateRepository.find({
+   where:{
+    category:category,
+   }
+  })
+  
+ return {
+   ...category,
+   realEstate 
+  }
+}

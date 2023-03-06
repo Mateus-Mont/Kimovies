@@ -59,7 +59,7 @@ export const listRealEstateService = async ():Promise<iReturnListRealEstate>=>{
         
     })
 
-    const realEstates = returnMultipleRealEstateSchema.parse(realEstatesFind)
+    const realEstates:iReturnListRealEstate = returnMultipleRealEstateSchema.parse(realEstatesFind)
 
     return realEstates
 }

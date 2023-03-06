@@ -7,6 +7,7 @@ import { listCategoriesService } from "./categories/categories.service"
 import { deleteUserService } from "./users/users.service"
 import { createRealEstateService } from "./realEstate/realEstate.service"
 import { listRealEstateService } from "./realEstate/realEstate.service"
+import { listRealEstateFromCategoryService } from "./categories/categories.service"
 
 export{
     createUserService,
@@ -17,5 +18,6 @@ export{
     listCategoriesService,
     deleteUserService,
     createRealEstateService,
-    listRealEstateService
+    listRealEstateService,
+    listRealEstateFromCategoryService
 }

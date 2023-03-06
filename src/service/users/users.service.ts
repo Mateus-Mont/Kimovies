@@ -61,5 +61,4 @@ export const deleteUserService  = async(idUser:number):Promise<void>=>{
 
    await usersRepository.softRemove(user!)
 
-
-}
+};

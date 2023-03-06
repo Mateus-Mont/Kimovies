@@ -8,4 +8,6 @@ export const returnDataCategorySchema = dataCategorySchema.extend({
   id: z.number(),
 });
 
+
+
 export const categoriesReturnSchema= returnDataCategorySchema.array()
