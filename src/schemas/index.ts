@@ -5,6 +5,9 @@ import { dataCategorySchema, returnDataCategorySchema } from "./categories/categ
 import { returnMultipleUserSchema } from "./users/users.schema";
 import { updateUserSchema } from "./users/users.schema";
 import { categoriesReturnSchema } from "./categories/categories.schema"
+import { createRealEstateSchema } from "./realEstate/realState.schema"
+import { returnCreateRealEstate } from "./realEstate/realState.schema"
+import { returnMultipleRealEstateSchema } from "./realEstate/realState.schema"
 
 export {
   loginUserSchema,
@@ -14,5 +17,8 @@ export {
   returnDataCategorySchema,
   returnMultipleUserSchema,
   updateUserSchema,
-  categoriesReturnSchema
+  categoriesReturnSchema,
+  createRealEstateSchema,
+  returnCreateRealEstate,
+  returnMultipleRealEstateSchema
 };

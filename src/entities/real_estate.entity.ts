@@ -2,7 +2,6 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryColumn,
@@ -21,8 +20,8 @@ export class RealEstate {
   @Column({ type: "boolean", default: false })
   sold: boolean;
 
-  @Column({ type: "decimal", precision: 12, scale: 2, default: 0 })
-  value: number | string;
+  @Column({ type: "decimal", precision: 12, scale: 2, default: 0, nullable:false})
+  value?: number | string;
 
   @Column({ type: "integer", nullable: false })
   size: number;
@@ -36,12 +35,12 @@ export class RealEstate {
   @ManyToOne(()=>Address)
   address:Address
 
-  @CreateDateColumn()
+  @CreateDateColumn({type:"date"})
   createdAt: string;
 
-  @UpdateDateColumn()
+  @UpdateDateColumn({type:"date"})
   updatedAt: string;
-
+  
   @ManyToOne(()=>Category)
   category:Category
 
