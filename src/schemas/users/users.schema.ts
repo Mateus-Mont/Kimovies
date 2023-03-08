@@ -1,19 +1,19 @@
 import { z } from "zod";
 
 export const createUserSchema = z.object({
-  name: z.string().min(3).max(45),
-  email: z.string().max(45).email(),
-  admin: z.boolean().optional().default(false),
+  name:     z.string().min(3).max(45),
+  email:    z.string().max(45).email(),
+  admin:    z.boolean().optional().default(false),
   password: z.string().max(120),
 
 });
 
 export const returnCreateUserSchema = createUserSchema
   .extend({
-    id: z.number(),
+    id:        z.number(),
     createdAt: z.string(),
     deletedAt: z.date().nullable(),
-    updatedAt:z.string().nullable()
+    updatedAt: z.string().nullable()
   }).omit({ password: true });
 
 export const returnMultipleUserSchema = returnCreateUserSchema.array();

@@ -8,6 +8,7 @@ import { categoriesReturnSchema } from "./categories/categories.schema"
 import { createRealEstateSchema } from "./realEstate/realState.schema"
 import { returnCreateRealEstate } from "./realEstate/realState.schema"
 import { returnMultipleRealEstateSchema } from "./realEstate/realState.schema"
+import { createSchedulesSchema } from "./scheadules/schedules.schema"
 
 export {
   loginUserSchema,
@@ -20,5 +21,6 @@ export {
   categoriesReturnSchema,
   createRealEstateSchema,
   returnCreateRealEstate,
-  returnMultipleRealEstateSchema
+  returnMultipleRealEstateSchema,
+  createSchedulesSchema
 };

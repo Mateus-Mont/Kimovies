@@ -26,7 +26,7 @@ export const createRealEstateService = async (dataRealEstate:iDataCreateRealEsta
     await addressRepository.save(newAddress)
 
     const categoryFindOne:Category  | null = await categoryRepository.findOneBy({
-            id:dataRealEstate.categoryId     
+          id:Number(dataRealEstate.categoryId)     
     })
 
     if(!categoryFindOne){

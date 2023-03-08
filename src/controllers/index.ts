@@ -6,6 +6,7 @@ import { updateUserController } from "./users.controller";
 import { createRealEstateController } from "./realEstate.controller"
 import { listRealEstatesController } from "./realEstate.controller"
 import { listRealEstateCategoryController } from "./categorie.controller"
+import { createSchedulesController } from "./scheadules.controller"
 
 export {
   createUserController,
@@ -15,5 +16,6 @@ export {
   updateUserController,
   createRealEstateController,
   listRealEstatesController,
-  listRealEstateCategoryController
+  listRealEstateCategoryController,
+  createSchedulesController
 };

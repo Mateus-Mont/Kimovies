@@ -6,6 +6,8 @@ import { iUpdateUser } from "./users.interface";
 import { iDataCreateRealEstate } from "./realEstate.interface"
 import { iReturnCreateRealEstate } from "./realEstate.interface"
 import { iReturnListRealEstate } from "./realEstate.interface"
+import { iCreateSchedule } from "./schedules.interface"
+
 
 export {
   iDataCreateUser,
@@ -16,5 +18,6 @@ export {
   iUpdateUser,
   iDataCreateRealEstate,
   iReturnCreateRealEstate,
-  iReturnListRealEstate
+  iReturnListRealEstate,
+  iCreateSchedule,
 };

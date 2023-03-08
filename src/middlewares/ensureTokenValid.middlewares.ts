@@ -20,8 +20,15 @@ export const ensureTokenValidMiddlewares = async (req: Request, res: Response, n
       throw new AppError(error.message, 401);
     }
 
-    if (idUser === decode?.sub || decode.admin) {
-      return next();
+    if(idUser){
+      if(idUser === decode?.sub || decode.admin  ) {
+        return next();
+      }
+    }
+
+    if(!idUser){
+      req.subToken = decode.sub
+      return next()
     }
 
     throw new AppError("Insufficient permission", 403);
