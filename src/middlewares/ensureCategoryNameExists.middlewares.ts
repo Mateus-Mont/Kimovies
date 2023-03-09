@@ -15,8 +15,6 @@ export const ensureCategoryNameExists = async ( req: Request, res: Response, nex
     },
   });
 
-  console.log("middle token");
-
   if (category) {
     throw new AppError("Category already exists", 409);
   }

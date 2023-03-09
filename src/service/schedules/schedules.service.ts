@@ -1,5 +1,4 @@
 import { Repository } from "typeorm";
-import { tuple } from "zod";
 import { AppDataSource } from "../../data-source";
 import { RealEstate, Schedule, User } from "../../entities";
 import { AppError } from "../../errors";
@@ -79,7 +78,6 @@ export const listPropertyAppointmentService = async (idRealEstate: number) => {
             schedules:{
                 user:true
             }
-      
         }         
     })
 

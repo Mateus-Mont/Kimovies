@@ -3,8 +3,6 @@ import { Request, Response, NextFunction } from "express";
 import { AppError } from "../errors";
 import Jwt from "jsonwebtoken";
 
-
-
 export const ensureTokenValidMiddlewares = async (req: Request, res: Response, next: NextFunction): Promise<void | Response> => {
   const idUser = req.params.id;
   const token = req.headers.authorization?.split(" ")[1];

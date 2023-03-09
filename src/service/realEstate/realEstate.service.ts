@@ -1,6 +1,4 @@
 import { Repository } from "typeorm";
-import { number } from "zod";
-
 import { AppDataSource } from "../../data-source";
 import { Address, Category, RealEstate } from "../../entities";
 import { AppError } from "../../errors";
@@ -42,8 +40,6 @@ export const createRealEstateService = async (dataRealEstate:iDataCreateRealEsta
     await realEstateRepository.save(realEstateCreate);
     
     const realEstate:iReturnCreateRealEstate=returnCreateRealEstate.parse(realEstateCreate);
-
-  
 
     return realEstate  
 };
