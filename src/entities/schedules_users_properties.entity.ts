@@ -23,9 +23,9 @@ export class Schedule {
   @Column({ type: "time",nullable:false })
   hour: string;
 
-  @ManyToOne(() => RealEstate, { cascade: true })
+  @ManyToOne(() => RealEstate)
   realEstate: RealEstate;
 
-  @ManyToOne(() => User, { cascade: true })
+  @ManyToOne(() => User)
   user: User;
 }

@@ -16,14 +16,13 @@ export const createRealEstateService = async (dataRealEstate:iDataCreateRealEsta
     const newAddress:Address= addressRepository.create(dataRealEstate.address)
     
     const addressFindOne = await addressRepository.findOneBy({
+      street:newAddress.street,
       number:String(newAddress.number)
    });
 
    if(addressFindOne) {
      throw new AppError("Address already exists", 409);
    }
-
-    await addressRepository.save(newAddress)
 
     const categoryFindOne:Category  | null = await categoryRepository.findOneBy({
           id:Number(dataRealEstate.categoryId)     
@@ -32,17 +31,19 @@ export const createRealEstateService = async (dataRealEstate:iDataCreateRealEsta
     if(!categoryFindOne){
       throw new AppError("category not found",404)
     }
+    await addressRepository.save(newAddress)
 
     const realEstateCreate:RealEstate=realEstateRepository.create({
         ...dataRealEstate,
         address:newAddress,
-         category:categoryFindOne
+        category:categoryFindOne
        });
-
 
     await realEstateRepository.save(realEstateCreate);
     
     const realEstate:iReturnCreateRealEstate=returnCreateRealEstate.parse(realEstateCreate);
+
+  
 
     return realEstate  
 };

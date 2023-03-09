@@ -17,8 +17,10 @@ export const ensureValidTokenAdminMiddlewares = async ( req: Request, res: Respo
     if (error) {
       throw new AppError(error.message, 401);
     }
+   
 
     if (decode.admin) {
+  
       return next();
     }
 

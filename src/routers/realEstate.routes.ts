@@ -5,5 +5,5 @@ import { createRealEstateSchema } from "../schemas";
 
 export const realEstateRoutes:Router=Router()
 
-realEstateRoutes.post( "",ensureValidBodyMiddlewares(createRealEstateSchema),ensureValidTokenAdminMiddlewares,createRealEstateController )
+realEstateRoutes.post( "",ensureValidTokenAdminMiddlewares,ensureValidBodyMiddlewares(createRealEstateSchema),createRealEstateController )
 realEstateRoutes.get( "",listRealEstatesController )

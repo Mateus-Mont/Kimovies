@@ -9,6 +9,7 @@ import { createRealEstateService } from "./realEstate/realEstate.service"
 import { listRealEstateService } from "./realEstate/realEstate.service"
 import { listRealEstateFromCategoryService } from "./categories/categories.service"
 import { createScheduleService } from "./schedules/schedules.service"
+import { listPropertyAppointmentService } from "./schedules/schedules.service"
 
 export{
     createUserService,
@@ -21,5 +22,6 @@ export{
     createRealEstateService,
     listRealEstateService,
     listRealEstateFromCategoryService,
-    createScheduleService
+    createScheduleService,
+    listPropertyAppointmentService
 }

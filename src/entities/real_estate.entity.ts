@@ -1,19 +1,11 @@
-import {
-  Column,
-  CreateDateColumn,
-  Entity,
-  ManyToOne,
-  OneToMany,
-  PrimaryColumn,
-  PrimaryGeneratedColumn,
-  UpdateDateColumn,
-} from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 import { Address } from "./addresses.entity";
 import { Category } from "./categories.entity";
 import { Schedule } from "./schedules_users_properties.entity";
 
 @Entity("real_state")
 export class RealEstate {
+  
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -26,13 +18,11 @@ export class RealEstate {
   @Column({ type: "integer", nullable: false })
   size: number;
 
-  @OneToMany(()=>Schedule, (Schedule)=>Schedule.user)
+  @OneToMany(()=>Schedule, (Schedule)=>Schedule.realEstate)
   schedules:Schedule[]
 
-  @OneToMany(()=>Schedule, (schedule)=>schedule.realEstate)
-  schedule:RealEstate[]
-
   @ManyToOne(()=>Address)
+  @JoinColumn()
   address:Address
 
   @CreateDateColumn({type:"date"})
