@@ -6,7 +6,6 @@ export const createRealEstateController = async (req:Request,res:Response):Promi
 
     const dataCreateRealEstate:iDataCreateRealEstate=req.body
    
-
     const newRealEstate:iReturnCreateRealEstate = await createRealEstateService(dataCreateRealEstate)
 
     return res.status(201).json(newRealEstate)

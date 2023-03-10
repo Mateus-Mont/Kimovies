@@ -1,15 +1,20 @@
 import { Repository } from "typeorm";
+import { date } from "zod";
 import { AppDataSource } from "../../data-source";
 import { RealEstate, Schedule, User } from "../../entities";
 import { AppError } from "../../errors";
 import { iCreateSchedule } from "../../interfaces";
 
-export const createScheduleService = async(dataSchedule:iCreateSchedule, userId:number):Promise<void>=>{
+export const createScheduleService = async(dataSchedule:iCreateSchedule, userId:number):Promise<Schedule>=>{
 
     const realEstateRepository:Repository<RealEstate> = AppDataSource.getRepository(RealEstate)
     const scheduleRepository:Repository<Schedule> = AppDataSource.getRepository(Schedule)
     const userRepository:Repository<User> = AppDataSource.getRepository(User)
     
+
+    const hour:Date= new Date( dataSchedule.hour)
+
+    console.log(hour.getHours)
 
     if(dataSchedule.hour<"08:00" || dataSchedule.hour>"18:00"){
         throw new AppError("Invalid hour, available times are 8AM to 18PM",400)
@@ -62,13 +67,15 @@ export const createScheduleService = async(dataSchedule:iCreateSchedule, userId:
     })
     
     await scheduleRepository.save(scheduleCreate)
+
+    return scheduleCreate
 }
 
-export const listPropertyAppointmentService = async (idRealEstate: number) => {
+export const listPropertyAppointmentService = async (idRealEstate: number):Promise<RealEstate> => {
     
     const realEstateRepository: Repository<RealEstate> =  AppDataSource.getRepository(RealEstate)
   
-    const realEstatesFind = await realEstateRepository.findOne({
+    const realEstatesFind: RealEstate | null  = await realEstateRepository.findOne({
         where:{
             id:idRealEstate 
         },

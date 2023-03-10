@@ -9,8 +9,6 @@ export const createCategoryController = async ( req: Request, res: Response ): P
 
   const newCategory: iReturnCreateCategory = await createCategoryService( dataCategory );
 
-  console.log("função resposta");
-
   return res.status(201).json(newCategory);
 };
 
